@@ -1,20 +1,3 @@
-/*
-Sistemas operativos, Grupo 05, Semestre 2023-2
-    Programa #01 - Interprete de línea de comandos usando pipe() y fork()
-
-Objetivo:
-    Elaboración de un intérprete de comandos en shell usando las llamadas
-    al sistema revisadas durante la clase de sistemas operativos escrito en
-    ANSI C
-
-Integrantes:
-    Espadas Rodriguez Anthony Jonathan  - 421033621
-    Genaro Vidal Hector                 - 421005011
-
-Fecha de entrega: 
-    28-03-2023
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -226,27 +209,3 @@ char **desglosarPipe(char *mensaje)
 
     return arg;                                                 // Devolvemos el apuntador a los comandos
 }
-
-/* ------ Conclusiones
-
-Espadas:
-    Este trabajo fue desafiante debido a que, además de requerir la implementación de las llamadas a sistemas estudiadas en clase,
-    como lo fueron fork() y pipe(), requirió hacer un repaso sobre mis conocimientos previos sobre el manejo de memoria y el uso
-    de apuntadores. Ya que el almacenamiento y recuperación de los comandos entre los distintos procesos hijo requería entender de
-    estos accesos para que la ejecución de los comandos fuese exitosa. 
-
-    Para esto último, a su vez, se requirió tener claro el funcionamiento de las salidas estándar, y como modificarlas; pues los comandos 
-    que requerían de un pipe podrían no funcionar según lo esperado si éstas no se manejaban de forma correcta. Finalmente, la integración 
-    de estos elementos me permitió comprender como ambas herramientas pueden complementarse para lograr implementaciones complejas que se 
-    complementen entre sí.
-
-Genaro:
-    En conclusión, los pipes permiten la comunicación bidireccional, lo que significa que ambos procesos pueden enviar y recibir datos
-    a través del mismo canal de comunicación. Esto puede ser útil en situaciones en las que el proceso padre necesita recibir información
-    de su proceso hijo, o cuando el proceso hijo necesita enviar datos al proceso padre.
-
-    En general, los pipes son una herramienta útil para la comunicación entre procesos en un sistema operativo. Si se utiliza correctamente,
-    y con un mejor manejo de, en este caso, de cadenas, tener una lógica del orden de declaración de pipes, crear procesos hijos, utilizar
-    apuntadores, etc. pueden ayudar a mejorar la eficiencia y la simplicidad del código.
-
-*/
