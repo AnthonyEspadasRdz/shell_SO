@@ -25,10 +25,11 @@ int main()
 
         printf("Introduce los comandos a ejecutar:\n");
         gets(mensaje);                                          // Recibe mensaje del usuario
-
+        
         caso = determinarCaso(mensaje);                         // Identifica si hay 1 o mas comandos
 
         sigue = identificarSalida(mensaje);                     // Se valida que el primer comando sea distinto de 'exit'
+        
         if (!sigue){
             caso = 2;}                                          // Cuandos se identifica un 'exit' se omite la ejecución de comandos
 
@@ -36,10 +37,14 @@ int main()
         {
             char **apuntadores = desglosarComandos(mensaje);    // Obtiene los apuntadores a los strings separados
             
-            for (int i = 0; apuntadores[i] != NULL; i++) 
+            /* Copia los apuntadores al arreglo de apuntadores 
+               de la función main */
+            int i;                                              // Declara el iterador
+            for (i = 0; apuntadores[i] != NULL; i++)            // Continua hasta encontrar un NULL
             {
-                arg[i] = apuntadores[i];                        // Copia los apuntadores al arreglo de apuntadores de la función main
+                arg[i] = apuntadores[i];                        // Copia el comando desglosado a el arreglo de comandos
             }
+            arg[i] = apuntadores[i];                            // Añade el NULL final al arreglo
             
             int pid = fork();                                   // Creamos el proceso hijo que se encargará de la ejecución
             if (!pid)                                           // Validamos que sea el proceso hijo
